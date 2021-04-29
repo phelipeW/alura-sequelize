@@ -11,6 +11,20 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      student_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'People', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      class_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Classes', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

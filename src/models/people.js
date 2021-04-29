@@ -2,6 +2,9 @@
 const {
   Model
 } = require('sequelize');
+
+const Models = require('../models')
+
 module.exports = (sequelize, DataTypes) => {
   class People extends Model {
     /**
@@ -10,7 +13,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.Registration, {
+        foreignKey: {
+          name: 'student_id',
+        }
+      })
+      this.hasMany(models.Class, {
+        foreignKey: {
+          name: 'teacher_id',
+        }
+      })
     }
   };
   People.init({
